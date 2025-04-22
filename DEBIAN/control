@@ -1,0 +1,7 @@
+Package: reverse
+Version: 1.0
+Architecture: all
+Depends: g++, make
+Maintainer: Serd3sh
+Description: word-reversing programm
+

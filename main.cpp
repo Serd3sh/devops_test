@@ -24,10 +24,11 @@ string reverse(string str) {
   return newStr;
 }
 
-int main() {
+int main(int argc, char* argv[]) {
   string str;
-  cout << "Input text: ";
-  getline(cin, str);
+  for (int i = 1; i < argc; i++) {
+    str += " " + string(argv[i]);
+  }
   string newStr = reverse(str);
   cout << "Result: " << newStr << endl;
   return 0;

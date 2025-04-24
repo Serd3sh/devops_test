@@ -2,9 +2,9 @@ name: Makefile CI
 
 on:
   push:
-    branches: [ runner_branch ]
+    branches: [ main ]
   pull_request:
-    branches: [ runner_branch ]
+    branches: [ main ]
 
 jobs:
   build:

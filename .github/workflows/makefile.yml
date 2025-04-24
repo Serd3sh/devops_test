@@ -1,0 +1,28 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Run build script
+      - name: Starting build
+        run: ./scripts/build.sh
+
+      # Run tests
+      - name: Running tests
+        run: ./scripts/test.sh
+
+      # Build a deb package
+      - name: Building a deb package
+        run: ./scripts/package.sh

@@ -1,4 +1,4 @@
 echo "Current directory: $(pwd)"
 cd ..
-dpkg-deb --build reverse
-mv reverse.deb reverse/
+dpkg-deb --build devops_test
+mv reverse.deb devops_test/

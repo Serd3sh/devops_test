@@ -3,6 +3,7 @@ flags=-Wall
 executable=reverse
 
 $(executable): main.o
+	mkdir -f ./usr/bin/
 	$(compiler) $(flags) main.o -o ./usr/bin/$(executable)
 	rm -f main.o
 

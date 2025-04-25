@@ -8,7 +8,7 @@ tests=(
 )
 
 for key in "${!tests[@]}"; do
-	output="$(${pwd}/reverse ${key})"
+	output="$(./reverse ${key})"
 	if ["${output}" = "${tests[$key]}"]; then
 		echo "Success test '${key}'"
 	else

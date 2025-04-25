@@ -18,12 +18,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Running tests
         run: ./scripts/test.sh
         
   package:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Building a deb package
         run: ./scripts/package.sh
         

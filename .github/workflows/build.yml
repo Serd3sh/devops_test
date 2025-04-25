@@ -9,20 +9,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
-
-      # Run build script
       - name: Starting build
         run: ./scripts/build.sh
-
-      # Run tests
+        
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Running tests
         run: ./scripts/test.sh
-
-      # Build a deb package
+        
+  package:
+    runs-on: ubuntu-latest
+    steps:
       - name: Building a deb package
         run: ./scripts/package.sh
+        

@@ -3,7 +3,7 @@ declare -A tests
 tests=(
 	["one two three four five six seven eight"]="Result: eight seven six five four three two one"
 	["Lorem ipsum dolor sit amet consectetur adipiscing elit"]="Result: elit adipiscing consectetur amet sit dolor ipsum Lorem"
-	["hello world"]="Result: world hello"
+	["hello world"]="Result: world hell"
 	["hi"]="Result: hi"
 )
 

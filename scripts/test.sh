@@ -12,7 +12,7 @@ for key in "${!tests[@]}"; do
 	if ["${output}" = "${tests[$key]}"]; then
 		echo "Success test '${key}'"
 	else
-		echo "Failure test '${key}' expected output '${$tests[$key]}' got '${output}'"
+		echo "Failure test '${key}' expected output '${tests[$key]}' got '${output}'"
 		exit 1
 	fi
 done

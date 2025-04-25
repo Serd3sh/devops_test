@@ -8,11 +8,11 @@ tests=(
 )
 
 for key in "${!tests[@]}"; do
-	output="$(./reverse $key)"
+	output="$(./reverse ${key})"
 	if ["${output}" = "${tests[$key]}"]; then
-		echo "Success test '$key'"
+		echo "Success test '${key}'"
 	else
-		echo "Failure test '$key' expected output '${$tests[$key]}' got '$output'"
+		echo "Failure test '${key}' expected output '${$tests[$key]}' got '${output}'"
 		exit 1
 	fi
 done

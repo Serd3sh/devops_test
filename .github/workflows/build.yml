@@ -50,4 +50,33 @@ jobs:
         
       - name: Building a deb package
         run: ./scripts/package.sh
+      
+      - name: Uploading deb package
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-package
+          path: ./reverse.deb
         
+  deploy:
+    runs-on: ubuntu-latest
+    needs: package
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Download deb package
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-package
+      
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/reverse:1.0 .
+        
+      - name: Run Docker container test
+        run: docker run ${{ secrets.DOCKERHUB_USERNAME }}/reverse:1.0
+
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Push Docker image to DockerHub
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/reverse:1.0

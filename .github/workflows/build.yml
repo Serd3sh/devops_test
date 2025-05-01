@@ -68,15 +68,16 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: deb-package
+          path: .
       
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/reverse:1.0 .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/reverse .
         
       - name: Run Docker container test
-        run: docker run ${{ secrets.DOCKERHUB_USERNAME }}/reverse:1.0
+        run: docker run ${{ secrets.DOCKERHUB_USERNAME }}/reverse
 
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Push Docker image to DockerHub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/reverse:1.0
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/reverse

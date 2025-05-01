@@ -19,7 +19,7 @@ jobs:
       - name: Upload executable
         uses: actions/upload-artifact@v4
         with:
-          name: reverse
+          name: executable
           path: ./reverse
           
   test:
@@ -32,7 +32,7 @@ jobs:
       - name: Download executable
         uses: actions/download-artifact@v4
         with:
-          name: reverse
+          name: executable
           
       - name: Fixing possible executable permissions
         run: chmod +x ./reverse
@@ -47,6 +47,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        
+      - name: Starting build
+        run: ./scripts/build.sh
         
       - name: Building a deb package
         run: ./scripts/package.sh

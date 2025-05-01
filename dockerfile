@@ -7,4 +7,4 @@ RUN apt-get update && \
     dpkg -i /app/reverse.deb || apt-get -f install -y && \
     rm -rf /var/lib/apt/lists/*
 
-CMD ls -la && ./reverse one two three four five
+CMD ./reverse one two three four five
